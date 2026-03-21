@@ -31,8 +31,6 @@ for rs in registers:
         if rs != rt:
             generate(rs,rt,rs+">"+rt)
 
-generate("a","c",",")
-
 print("\t.endsection")            
 
 

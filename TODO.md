@@ -3,7 +3,7 @@
 ## conversion.
 
 - Get it working
-- Synonyms for [ ] ( ) push 
+- Synonyms in documentation
 
 ## outstanding words.
 
