@@ -1,0 +1,43 @@
+# *******************************************************************************************
+# *******************************************************************************************
+#
+#		Name : 		Makefile
+#		Purpose :	Top level Makefile
+#		Date :		21st March 2026
+#		Author : 	Paul Robson (paul@robsons.org.uk)
+#
+# *******************************************************************************************
+# *******************************************************************************************
+
+include ../environment/system.make
+
+KERNELFILE = $(BUILDDIR)kernel.prg
+RUNFILE = $(BUILDDIR)m7app.prg
+MODULES = core 
+BUILDROOT = ./
+
+.always:
+
+syntax:
+	cp $(ROOTDIR)documents/*sublime-syntax ~/.config/sublime-text/Packages/User -v
+
+autogen:
+	$(PYTHON) $(SCRIPTDIR)generators/shiftgen.py >$(SOURCEDIR)core/generated/__shift.asm
+	$(PYTHON) $(SCRIPTDIR)generators/copygen.py >$(SOURCEDIR)core/generated/__copyreg.asm
+	$(PYTHON) $(SCRIPTDIR)generators/stackgen.py >$(SOURCEDIR)core/generated/__stack.asm
+	$(PYTHON) $(SCRIPTDIR)generators/incdecgen.py >$(SOURCEDIR)core/generated/__incdec.asm
+
+prelim: autogen .always
+	$(PYTHON) $(SCRIPTDIR)documentation.py $(BUILDROOT) $(MODULES) >$(ROOTDIR)documents/vocabulary.md
+	$(PYTHON) $(SCRIPTDIR)dictionary.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__dictionary.asm
+	$(PYTHON) $(SCRIPTDIR)build.py $(BUILDROOT) $(MODULES) >__main.asm
+
+asm: prelim .always
+	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
+	$(PYTHON) $(SCRIPTDIR)compiler.py $(KERNELFILE) $(RUNFILE) test.m7
+
+#
+#		Assemble code.asm and run it
+#
+run: .always asm
+	$(EMULATOR) -prg $(RUNFILE),$(CODEADDR) 

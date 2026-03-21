@@ -1,0 +1,11 @@
+// test program
+
+:star 42 raw.write ;
+:pling 33 raw.write ;
+:cr 13 raw.write ;
+
+:main   
+    star pling cr
+    star pling cr
+    -2 raw.hex 
+;
