@@ -3,7 +3,6 @@
 ## conversion.
 
 - variables
-- string handler
 
 ## Better compiler supporting { }
 

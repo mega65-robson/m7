@@ -31,13 +31,13 @@ DebugBreak:
 		.bytecode  "swap"
 SwapReg:
         lda     aRegister
-        ldy     bRegister
+        ldx     bRegister
         sta     bRegister
-        sty     aRegister
+        stx     aRegister
         lda     aRegister+1
-        ldy     bRegister+1
+        ldx     bRegister+1
         sta     bRegister+1
-        sty     aRegister+1
+        stx     aRegister+1
         .donext      
         
 ; ************************************************************************************************

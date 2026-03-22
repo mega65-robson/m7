@@ -6,11 +6,5 @@
 
 :main   
     raw.hex cr
-    star
-    pling
-    star
-    cr star cr
-    42 raw.hex cr
-    32766 raw.hex cr
-    bye
+    "Hello_world" raw.hex break bye
 ;

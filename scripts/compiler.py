@@ -77,7 +77,14 @@ class Compiler(object):
     #       Compile one element
     #
     def compile(self,s):
-        s = s.upper()
+        if s.startswith('"') and s.endswith('"'):                                   # Inline string
+            s = s[1:-1].replace("_"," ")+chr(0)
+            self.compile("string.handler")
+            for c in s:
+                self.compileByte(ord(c),c)
+            return
+
+        s = s.upper()                                                               # Only strings are case sensitive.
 
         if s.startswith(":"):                                                       # Definition.
             s = s[1:].upper()
