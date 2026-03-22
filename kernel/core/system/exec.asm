@@ -24,6 +24,15 @@ RunProgram:
         lda     #pcStack                    ; reset the internal stack
         sta     stackPtr
 
+        lda     Start+16                    ; free memory into A
+        sta     aRegister
+        lda     Start+17
+        sta     aRegister+1
+        stz     bRegister                   ; zero B & C
+        stz     bRegister+1
+        stz     cRegister
+        stz     cRegister+1
+
         lda     BootAddress                 ; set the start PC value.
         sta     pcStack
         lda     BootAddress+1

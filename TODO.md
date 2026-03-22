@@ -26,5 +26,6 @@
 ## Notes 
 - 256 byte word limit.
 - ; marks the end of the word.
-- as does variable definition
-- A initialise to free, B C zero.
+- :word delimits chunks to process seperately.
+- A initialise to free memory, B C zero.
+
