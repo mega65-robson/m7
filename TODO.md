@@ -1,18 +1,12 @@
 # TODO List
 
-## conversion.
-
-- variables
 
 ## Better compiler supporting { }
 
 - Add initialise module functionality
 
-## Notes
-- check raw.read
-- check pop
-
 ## Outstanding words
+- -> and & for variables.
 - while
 - for i
 - if if0 if+ if-
@@ -22,9 +16,13 @@
 - fill copy
 - u/ / mod umod
 
+## Concerns
+- check raw.read
+- check pop
+
 ## Notes 
 - 256 byte word limit.
 - ; marks the end of the word.
 - :word delimits chunks to process seperately.
 - A initialise to free memory, B C zero.
-
+- variables returns the value, premodifiers write/address.

@@ -21,14 +21,17 @@
 StringHandler:
         .copyAB                             ; copy A to B
         ldx     stackPtr                    ; access the stack.
-        lda     $00,x                       ; copy the address of the string to A and zTemp0
+        stx     _SHSkip+1                   ; patch up the string skipping
+        clc
+        tya
+        adc     $00,x                       ; copy the address of the string to A and zTemp0
         sta     aRegister
-        sta     zTemp0
         lda     $01,x
+        adc     #0
         sta     aRegister+1
-        sta     zTemp0+1        
+
 _SHSkip:
-        lda     (zTemp0),y                  ; skip over the ASCIIZ string
+        lda     ($00),y                     ; skip over the ASCIIZ string
         iny
         cmp     #0
         bne     _SHSkip

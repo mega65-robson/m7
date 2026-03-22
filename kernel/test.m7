@@ -4,7 +4,11 @@
 :pling 33 raw.write ;
 :cr 13 raw.write ;
 
+:count variable 
+
 :main   
-    raw.hex cr
-    "Hello_world" raw.hex break bye
+    raw.hex 
+    count raw.hex 
+    "Hello_world" 
+    raw.hex bye
 ;

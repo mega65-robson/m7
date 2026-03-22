@@ -98,6 +98,11 @@ class Compiler(object):
                 self.writeWord(self.base+8,self.pctr)
             return
 
+        if s == "VARIABLE":                                                         # handle variable.
+                self.compile("var.handler")
+                self.compileWord(0,"0",False)
+                return
+
         if re.match("^\\-?\\d+$",s):                                                # Decimal
             self.compileConstant(int(s),s)
             return
