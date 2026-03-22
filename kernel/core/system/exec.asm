@@ -36,6 +36,9 @@ Const1Byte:
         .bytecode   "const.2::1"
 Const2Byte:
 
+ByteCodeError:
+        brk
+        
 ; ************************************************************************************************
 ;
 ;;                          Return to the calling operating system.

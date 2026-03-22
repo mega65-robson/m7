@@ -12,6 +12,7 @@
 import sys,os,re
 
 from build import *
+from synonyms import *
 
 # *******************************************************************************************
 #
@@ -19,12 +20,12 @@ from build import *
 #
 # *******************************************************************************************
 
-class MainBuilder(AbstractBuilder):
+class DictionaryBuilder(AbstractBuilder):
     def __init__(self):
         AbstractBuilder.__init__(self)
         self.byteCodes = {}
         self.codeWords = {}
-
+        self.synonyms = Synonyms().get()
         self.nextByteCode = 4
 
     def processInclude(self,f):
@@ -63,7 +64,7 @@ class MainBuilder(AbstractBuilder):
             self.renderDictionaryItemBytecode(name,info)
         for name,info in self.codeWords.items():
             self.renderDictionaryItemCodewords(name,info)
-        for name,copies in self.getSynonyms().items():
+        for name,copies in self.synonyms.items():
             self.renderDictionaryItemBytecode(name,self.byteCodes[copies])
 
         print("\t.byte\t0")
@@ -81,13 +82,6 @@ class MainBuilder(AbstractBuilder):
         print("\t.byte\t{0} ; {1}".format(",".join(["${0:02x}".format(x) for x in xname]),name))
         print("\t.word\t{0}-1".format(value[0]))
 
-    def getSynonyms(self):
-        return {
-            "[":"abc>","]":">abc",
-            "(":"bc>",")":">bc",
-            "push":"a>",
-            ",":"a>c"
-        }
 if __name__ == "__main__":
-    MainBuilder().run()
+    DictionaryBuilder().run()
 

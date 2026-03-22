@@ -12,6 +12,7 @@
 import sys,os,re
 
 from build import *
+from synonyms import *
 
 # *******************************************************************************************
 #
@@ -24,6 +25,7 @@ class DocumentBuilder(AbstractBuilder):
         AbstractBuilder.__init__(self)
         self.documents = {}
         self.currentDoc = ""
+        self.synonyms = Synonyms().get()
 
     def processInclude(self,f):
         pass
@@ -40,9 +42,11 @@ class DocumentBuilder(AbstractBuilder):
             if s.find(".codeword") > 0:
                 m = re.match("^\\s*\\.codeword\\s*\\\"(.*?)\\\"\\s*$",s)
                 if self.currentDoc != "":
-                    self.documents[m.group(1).strip().lower()] = self.currentDoc
-                    self.currentDoc = ""
-
+                    name = m.group(1).strip().lower()
+                    self.documents[name] = self.currentDoc
+        for syn,real in self.synonyms.items():
+            if real in self.documents:
+                self.documents[syn] = self.documents[real]
 
     def header(self):
         print("# M7 Vocabulary")

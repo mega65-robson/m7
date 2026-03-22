@@ -30,6 +30,7 @@ autogen:
 prelim: autogen .always
 	$(PYTHON) $(SCRIPTDIR)documentation.py $(BUILDROOT) $(MODULES) >$(ROOTDIR)documents/vocabulary.md
 	$(PYTHON) $(SCRIPTDIR)dictionary.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__dictionary.asm
+	$(PYTHON) $(SCRIPTDIR)vectors.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__vectors.asm
 	$(PYTHON) $(SCRIPTDIR)build.py $(BUILDROOT) $(MODULES) >__main.asm
 
 asm: prelim .always

@@ -3,10 +3,6 @@
 ## conversion.
 
 - Get it working
-- Synonyms in documentation
-
-## outstanding words.
-
 - variables
 - string handler
 
