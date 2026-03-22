@@ -5,7 +5,12 @@
 :cr 13 raw.write ;
 
 :main   
-    star pling cr
-    star pling cr
-    -2 raw.hex 
+    raw.hex cr
+    star
+    pling
+    star
+    cr star cr
+    42 raw.hex cr
+    32766 raw.hex cr
+    bye
 ;

@@ -40,10 +40,10 @@ codeword .macro
 ; ************************************************************************************************
 
 copyAB  .macro
-        ldy     aRegister
-        sty     bRegister
-        ldy     aRegister+1
-        sty     bRegister+1
+        lda     aRegister
+        sta     bRegister
+        lda     aRegister+1
+        sta     bRegister+1
         .endm
 
 ; ************************************************************************************************

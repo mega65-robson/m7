@@ -43,7 +43,11 @@ pcStack:
 temp0:
         .fill   2
         
-stackPointer:
+stack6502:
         .fill   1
+
+returnFlag:
+        .fill   1
+
         .endsection        
         

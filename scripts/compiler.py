@@ -105,7 +105,7 @@ class Compiler(object):
                 self.compileByte(addr,s)
             else:
                 addr = ((addr >> 1) & 0x7FFF) | 0x8000
-                self.compileWord(addr,s)                                  
+                self.compileWord(addr,s,True)                                  
             return
 
         assert False,"Word not recognised "+s
@@ -119,7 +119,7 @@ class Compiler(object):
             self.compileByte(n,"")
         else:
             self.compileByte(1,text)
-            self.compileWord(n,"")
+            self.compileWord(n,"",False)
     #
     #       Write one byte at the program counter.
     #
@@ -127,17 +127,17 @@ class Compiler(object):
         assert len(self.memory)+self.base == self.pctr
         print("{0:04x} :   {1:02x}\t\t{2}".format(self.pctr,value,text.lower()))
         self.memory += [ 0 ]
-        value = ((value & 0xFF) << 8) | ((value & 0xFF00) >> 8)
         self.writeByte(self.pctr,value)
         self.pctr += 1
     #
     #       Write one word at the program counter.
     #
-    def compileWord(self,value,text):
+    def compileWord(self,value,text,swap):
         assert len(self.memory)+self.base == self.pctr
         print("{0:04x} : {1:04x}\t\t{2}".format(self.pctr,value,text.lower()))
         self.memory += [ 0,0 ]
-        value = ((value & 0xFF) << 8) | ((value & 0xFF00) >> 8)
+        if swap:
+            value = ((value & 0xFF) << 8) | ((value & 0xFF00) >> 8)
         self.writeWord(self.pctr,value)
         self.pctr += 2
     #
