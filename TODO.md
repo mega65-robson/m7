@@ -1,16 +1,14 @@
 # TODO List
 
+## Outstanding words
+
+- -> and & for variables.
 
 ## Better compiler supporting { }
 
 - Add initialise module functionality
 - endcase test on constant.
 - optimise fill/copy
-
-## Outstanding words
-
-- / mod 
-- -> and & for variables.
 
 ## Concerns
 - check raw.read
