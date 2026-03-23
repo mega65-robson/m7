@@ -35,6 +35,8 @@ RunProgram:
         stz     cRegister
         stz     cRegister+1
 
+        stz     varModifier                 ; clear the variable modifier
+
         lda     BootAddress                 ; set the start PC value.
         sta     pcStack
         lda     BootAddress+1
@@ -100,6 +102,7 @@ _VMCallLoop:
         beq     _VMCallLoop
 
         stz     returnFlag                  ; clear the return flag
+        stz     varModifier                 ; clear the variable modifier
         dec     stackPtr                    ; drop one level
         dec     stackPtr
         ply                                 ; restore the former Y position
@@ -167,7 +170,7 @@ ReturnToCaller:
 
         .bytecode  ";"
 SubReturn:        
-        inc     returnFlag
+        inc     returnFlag                  ; set flag to return
         rts
 
 

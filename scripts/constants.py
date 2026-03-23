@@ -29,7 +29,7 @@ class ConstantBuilder(DictionaryBuilder):
     def convert(self,s):
         s = s.upper()
         s = s.replace(">","GREATER").replace("<","LESS").replace("=","EQUAL").replace("+","PLUS").replace("-","MINUS").replace("@","AT")
-        s = s.replace("*","ASTERISK").replace("/","SLASH").replace(".","DOT").replace(";","SEMICOLON").replace("!","PLING").replace("","")
+        s = s.replace("*","ASTERISK").replace("/","SLASH").replace(".","DOT").replace(";","SEMICOLON").replace("!","PLING").replace("&","AMPERSAND")
         #s = s.replace("","").replace("","").replace("","").replace("","").replace("","").replace("","")
         return s
 

@@ -61,6 +61,9 @@ currentTest:
 endCaseFlag:
         .fill   1        
 
+varModifier:
+        .fill   1
+        
 tempStack:
         .fill   256
                 

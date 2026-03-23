@@ -1,9 +1,5 @@
 # TODO List
 
-## Outstanding words
-
-- -> and & for variables.
-
 ## Better compiler supporting { }
 
 - Add initialise module functionality
