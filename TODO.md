@@ -4,13 +4,12 @@
 ## Better compiler supporting { }
 
 - Add initialise module functionality
-- Replace temporary stack (pha) with indexed.
+- Replace temporary stack (pha) with indexed, now won't work.
 
 ## Outstanding words
 
 - if if0 if+ if-
 - ifelse ifelse0 ifelse+ ifelse-
-- repeat
 - while
 - case otherwise endcase
 - fill copy

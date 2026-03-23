@@ -32,12 +32,14 @@ ReadByte:
 
 		.bytecode  "@"
 ReadWord:
+        phy
         ldy     #1
         lda     (aRegister),y
         tax
         lda     (aRegister)
         sta     aRegister
         stx     aRegister+1
+        ply
         .donext
 
 ; ************************************************************************************************

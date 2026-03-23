@@ -147,8 +147,8 @@ Dump the Register state Read Character into A Register from system input. 0 if n
 Dump the Register state Read Character into A Register from system input. 0 if none available Write Character in A Register to system output
 ## reg
 Dump the Register state
-## string.handler
-Multiply A by B
+## repeat
+Multiply A by B Repeat loop. The syntax is repeat [word] ; the word is executed until the A register is non zero on exit. The loop is executed at least once.
 ## swap
 System debug break Swap A & B
 ## u<
