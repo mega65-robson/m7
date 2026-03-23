@@ -28,6 +28,7 @@ autogen:
 	$(PYTHON) $(SCRIPTDIR)generators/incdecgen.py >$(SOURCEDIR)core/generated/__incdec.asm
 
 prelim: autogen .always
+	$(PYTHON) $(SCRIPTDIR)constants.py $(BUILDROOT) $(MODULES)# >$(ROOTDIR)core/generated/__byteconst.inc
 	$(PYTHON) $(SCRIPTDIR)documentation.py $(BUILDROOT) $(MODULES) >$(ROOTDIR)documents/vocabulary.md
 	$(PYTHON) $(SCRIPTDIR)dictionary.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__dictionary.asm
 	$(PYTHON) $(SCRIPTDIR)vectors.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__vectors.asm

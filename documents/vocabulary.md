@@ -156,7 +156,7 @@ Put signed larger of A and B in A
 ## min
 Put signed smaller of A and B in A
 ## mod
-Signed Division of B by A. A = 0 is indeterminate. Modulus of Signed Division of B by A. A = 0 is indeterminate.
+Signed Division of B by A. A = 0 is indeterminate. Modulus of Signed Division of B by A. A = 0 is indeterminate. Calculates |a| mod |b|.
 ## negate
 Fill memory from address in A with byte B, for a count of C. C = 0 is supported. Copy memory from the address in B to the address in A, C times. C = 0 is supported This is a single forward copy so cannot cope with overlaps. Negate A
 ## not
@@ -178,7 +178,7 @@ Dump the Register state
 ## repeat
 Multiply A by B Repeat loop. The syntax is repeat [word] ; the word is executed until the A register is non zero on exit. The loop is executed at least once.
 ## string.handler
-Signed Division of B by A. A = 0 is indeterminate. Modulus of Signed Division of B by A. A = 0 is indeterminate.
+Signed Division of B by A. A = 0 is indeterminate. Modulus of Signed Division of B by A. A = 0 is indeterminate. Calculates |a| mod |b|.
 ## swap
 System debug break Swap A & B
 ## u/
