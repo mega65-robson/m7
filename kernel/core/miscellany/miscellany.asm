@@ -51,10 +51,9 @@ SwapReg:
 		.bytecode  "pop"
 PopA:
         .copyAB
-        pla
-        sta aRegister+1
-        pla
-        sta aRegister
+        .stackopen
+        .rpop   aRegister
+        .stackclose
         .donext
 
         .endsection

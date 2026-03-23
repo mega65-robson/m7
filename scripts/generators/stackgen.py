@@ -17,17 +17,13 @@ def generate(isPush,registers,name):
     print(";; {0} registers {1} {2} the stack\n".format("Push" if isPush else "Pop",rs,"on" if isPush else "off"))
     print("\t.bytecode \"{1}\"\nGenStack{0}:".format(genidx,name))
     genidx += 1
+    print("\t.stackopen")
     for r in registers:
         if isPush:
-            print("\tlda\t{0}Register".format(r))
-            print("\tpha")
-            print("\tlda\t{0}Register+1".format(r))
-            print("\tpha")
+            print("\t.rpush {0}Register".format(r))
         else:
-            print("\tpla")
-            print("\tsta\t{0}Register+1".format(r))
-            print("\tpla")
-            print("\tsta\t{0}Register".format(r))
+            print("\t.rpop {0}Register".format(r))
+    print("\t.stackclose")
     print("\t.donext\n")
 
 genidx = 0

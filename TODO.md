@@ -4,7 +4,6 @@
 ## Better compiler supporting { }
 
 - Add initialise module functionality
-- Replace temporary stack (pha) with indexed, now won't work.
 
 ## Outstanding words
 

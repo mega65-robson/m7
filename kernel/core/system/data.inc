@@ -52,5 +52,11 @@ returnFlag:
 index:  
         .fill   1
 
+tempStackPtr:
+        .fill   1
+
+tempStack:
+        .fill   256
+                
         .endsection        
         

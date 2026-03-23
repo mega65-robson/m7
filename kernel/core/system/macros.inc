@@ -93,3 +93,35 @@ _NoBorrow:
         dec     0+(\1)
         .endm
         
+; ************************************************************************************************
+;
+;                               Push data off/on temporary stack
+;
+; ************************************************************************************************
+
+stackopen .macro
+        ldx     tempStackPtr
+        .endm
+
+stackclose .macro
+        stx     tempStackPtr
+        .endm
+
+rpush   .macro
+        lda     \1
+        sta     tempStack,x
+        lda     1+\1
+        sta     tempStack+1,x
+        inx
+        inx
+        .endm
+
+rpop    .macro
+        dex
+        dex
+        lda     tempStack,x
+        sta     \1
+        lda     tempStack+1,x
+        sta     1+\1
+        .endm
+

@@ -24,6 +24,8 @@ RunProgram:
         lda     #pcStack                    ; reset the internal stack
         sta     stackPtr
 
+        stz     tempStackPtr                ; reset the temporary stack
+        
         lda     Start+16                    ; free memory into A
         sta     aRegister
         lda     Start+17
