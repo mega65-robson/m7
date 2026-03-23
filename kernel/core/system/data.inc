@@ -49,5 +49,8 @@ stack6502:
 returnFlag:
         .fill   1
 
+index:  
+        .fill   1
+
         .endsection        
         

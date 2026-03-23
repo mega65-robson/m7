@@ -19,7 +19,7 @@
 
 		.codeword  "reg"
 WriteReg:
-        phx
+        phy
         lda     #65
         ldx     aRegister
         ldy     aRegister+1
@@ -34,7 +34,7 @@ WriteReg:
         jsr     _WROut
         lda     #13
         jsr     ChrOut
-        plx
+        ply
         .donext
 
 _WROut:
