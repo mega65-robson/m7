@@ -2,16 +2,16 @@
 
 :star 42 raw.write ;
 :pling 33 raw.write ;
-:cr  13 raw.write ;
+:plus 43 raw.write ;
+:cr  [ 13 raw.write ] ;
 :bar 10 for star cr ;
 :box 4 for bar ;
 
 :count variable 
 
-:test [ $100 @ raw.hex -1 $100 +! $100 @ 0= ] ;
+:body i 5 - raw.hex ifelse+ star plus cr ;
 
 :main   
-    10 $100 !
-    repeat test raw.hex cr
+    10 for body
     pling cr bye
 ;

@@ -9,7 +9,6 @@
 
 - if if0 if+ if-
 - ifelse ifelse0 ifelse+ ifelse-
-- while
 - case otherwise endcase
 - fill copy
 - u/ / mod umod

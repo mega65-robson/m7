@@ -17,22 +17,21 @@
 ;;     A register is non zero after this, the word [body] is executed. 
 ;;
 ; *******************************************************************************************
-
-        +alignword
-WhileStructure: ;; code:while
-        ldz     #0                          ; Execute test word
-        jsr     ExecuteAtOffset
-        ldq     aRegister                   ; Exit if A = 0
-        beq     .whileExit
-
-        ldz     #4                          ; Execute body word
-        jsr     ExecuteAtOffset
+    
+        .bytecode "while"
+WhileStructure: 
+        phy                                 ; save start
+        jsr     RunOneWord                  ; run the test
+        lda     aRegister                   ; exit if zero
+        ora     aRegister+1
+        beq     _WhileExit
+        jsr     RunOneWord                  ; run the body
+        ply                                 ; back to start and go round
         bra     WhileStructure
-
-.whileExit:        
-        lda     #8                          ; Skip over.
-        jsr     AdvanceProgramCounter
-        +donext
+_WhileExit:
+        pla                                 ; throw saved position
+        jsr     SkipInstruction             ; skip over the body.        
+        .donext
 
         .endsection
         

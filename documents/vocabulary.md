@@ -125,6 +125,22 @@ Dump the Register state Read Character into A Register from system input. 0 if n
 For loop. Executes he following word 'aRegister' times, (works correctly for zero) The index counts from n-1 to 0
 ## i
 For loop index value
+## if
+Conditionally executes the following word if A is non zero. The form is if [word]
+## if+
+Conditionally executes the following word if A is positive. The form is if [word]
+## if-
+Conditionally executes the following word if A is negative. The form is if [word]
+## if0
+Conditionally executes the following word if A is zero. The form is if [word]
+## ifelse
+Conditionally executes one of two words depending on the value in A. Form is ifelse [word1] <word2>. If A is non zero, executes word1 otherwise executes word2
+## ifelse+
+Conditionally executes one of two words depending on the value in A. Form is ifelse [word1] <word2>. If A is positive, executes word1 otherwise executes word2
+## ifelse-
+Conditionally executes one of two words depending on the value in A. Form is ifelse [word1] <word2>. If A is negative, executes word1 otherwise executes word2
+## ifelse0
+Conditionally executes one of two words depending on the value in A. Form is ifelse [word1] <word2>. If A is zero, executes word1 otherwise executes word2
 ## max
 Put signed larger of A and B in A
 ## min
@@ -153,5 +169,7 @@ Multiply A by B Repeat loop. The syntax is repeat [word] ; the word is executed 
 System debug break Swap A & B
 ## u<
 Set A to -1 if B < A , unsigned test
+## while
+While loop. Has the form while [test] [body] ; the word [test] is executed, if the A register is non zero after this, the word [body] is executed.
 ## xor
 Binary xor A and B to A
