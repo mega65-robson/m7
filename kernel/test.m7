@@ -9,7 +9,7 @@
 
 :count variable 
 
-:body i 5 - raw.hex ifelse+ star plus cr ;
+:body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
 :main   
     10 for body

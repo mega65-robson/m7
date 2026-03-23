@@ -55,6 +55,12 @@ index:
 tempStackPtr:
         .fill   1
 
+currentTest:
+        .fill   2
+
+endCaseFlag:
+        .fill   1        
+
 tempStack:
         .fill   256
                 

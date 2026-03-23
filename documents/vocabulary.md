@@ -121,6 +121,8 @@ Copy register C to register A
 Copy register C to register B
 ## c@
 Dump the Register state Read Character into A Register from system input. 0 if none available Write Character in A Register to system output Write Number in A Register as hex to system output, space prefixed Read the byte at A into A
+## case
+Case structure, tests A. Form is case [test] [word] [test] [word] otherwise [word] endcase The otherwise is optional. Once a match has been made (otherwise matches all) then we shift beyond endcase. A is not restored afterwards, so values can be passed out. The [word] can be a single value, or a compound word. Otherwise is optional.
 ## for
 For loop. Executes he following word 'aRegister' times, (works correctly for zero) The index counts from n-1 to 0
 ## i

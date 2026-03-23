@@ -4,12 +4,10 @@
 ## Better compiler supporting { }
 
 - Add initialise module functionality
+- endcase test on constant.
 
 ## Outstanding words
 
-- if if0 if+ if-
-- ifelse ifelse0 ifelse+ ifelse-
-- case otherwise endcase
 - fill copy
 - u/ / mod umod
 - -> and & for variables.
