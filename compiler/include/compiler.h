@@ -17,4 +17,5 @@
 #include <string.h>
 #include <ctype.h>
 
+#include "identifiers.h"
 #include "runtime.h"
