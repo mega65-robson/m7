@@ -24,7 +24,7 @@ def generate(isPush,registers,name):
         else:
             print("\t.rpop {0}Register".format(r))
     print("\t.stackclose")
-    print("\t.donext\n")
+    print("\trts\n")
 
 genidx = 0
 

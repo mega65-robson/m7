@@ -25,7 +25,7 @@ IfCommand:
 IfFailed:
         jsr     SkipInstruction
 IfSuccess:
-        .donext
+        rts
 
 ; *******************************************************************************************
 ;;

@@ -31,7 +31,7 @@ FillMemory:
 
         bne     FillMemory
 _FillExit:        
-        .donext
+        rts
 
 ; *******************************************************************************************
 ;;
@@ -55,6 +55,6 @@ CopyMemory:
 
         bne     CopyMemory
 _CopyExit:        
-        .donext        
+        rts        
         
         .endsection

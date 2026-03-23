@@ -22,7 +22,7 @@ ReadByte:
         lda     (aRegister)
         sta     aRegister
         stz     aRegister+1
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -40,7 +40,7 @@ ReadWord:
         sta     aRegister
         stx     aRegister+1
         ply
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -52,7 +52,7 @@ ReadWord:
 WriteByte:
         lda     bRegister
         sta     (aRegister)
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -69,7 +69,7 @@ WriteWord:
         ldy     #1
         sta     (aRegister),y
         ply
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -89,6 +89,6 @@ AddWord:
         adc     (aRegister),y
         sta     (aRegister),y
         ply
-        .donext
+        rts
 
         .endsection

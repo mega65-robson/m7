@@ -87,7 +87,7 @@ IsNegative:
 ReturnFalse:
         stz     aRegister
         stz     aRegister+1
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -103,7 +103,7 @@ ReturnTrue:
         lda     #$FF
         sta     aRegister
         sta     aRegister+1
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -188,7 +188,7 @@ _NoOverflow:
 MinAB:
         jsr     SignedCompareBA
         bcs     CopyBA
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -200,14 +200,14 @@ MinAB:
 MaxAB:
         jsr     SignedCompareAB
         bcs     CopyBA
-        .donext
+        rts
 
 CopyBA:
         lda     bRegister
         sta     aRegister        
         lda     bRegister+1
         sta     aRegister+1
-        .donext
+        rts
 
         .endsection
 

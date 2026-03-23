@@ -31,7 +31,7 @@ WhileStructure:
 _WhileExit:
         pla                                 ; throw saved position
         jsr     SkipInstruction             ; skip over the body.        
-        .donext
+        rts
 
         .endsection
         

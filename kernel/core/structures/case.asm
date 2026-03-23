@@ -23,12 +23,12 @@ otherwiseWord:
         sta     aRegister
         lda     currentTest+1
         sta     aRegister+1
-        .donext
+        rts
 
         .bytecode "endcase"
 endcaseWord:    
         dec     endCaseFlag
-        .donext
+        rts
 
 ; *******************************************************************************************
 ;;
@@ -91,6 +91,6 @@ _caseExit:
         sta     currentTest+1
         pla
         sta     currentTest
-        .donext
+        rts
 
         .endsection

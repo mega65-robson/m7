@@ -35,7 +35,7 @@ WriteReg:
         lda     #13
         jsr     ChrOut
         ply
-        .donext
+        rts
 
 _WROut:
         jsr     ChrOut
@@ -63,7 +63,7 @@ ReadChar:
         sta     aRegister
         stz     aRegister+1
         ply
-        .donext 
+        rts 
 
 ; ************************************************************************************************
 ;
@@ -75,7 +75,7 @@ ReadChar:
 WriteChar:
         lda     aRegister
         jsr     ChrOut
-        .donext      
+        rts      
 
 ; ************************************************************************************************
 ;
@@ -104,7 +104,7 @@ WriteHexNS:
         jsr     PrintByte
         lda     aRegister
         jsr     PrintByte
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -129,5 +129,5 @@ _NotHex:
         adc     #48
         jmp     ChrOut
 
-        .donext      
+        rts      
         .endsection

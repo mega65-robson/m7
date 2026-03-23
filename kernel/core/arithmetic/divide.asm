@@ -24,7 +24,7 @@ UnsignedDivide:
         sta     aRegister
         lda     bRegister+1
         sta     aRegister+1
-        .donext
+        rts
 
 ; *******************************************************************************************
 ;;
@@ -39,7 +39,7 @@ UnsignedModulus:
         sta     aRegister
         lda     zTemp0+1
         sta     aRegister+1
-        .donext
+        rts
 
 ; *******************************************************************************************
 ;

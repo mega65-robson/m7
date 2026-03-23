@@ -47,7 +47,7 @@ _MultNoAdd:
         ora     zTemp0+1
         bne     _MultLoop
 
-        .donext
+        rts
 
         .endsection
 

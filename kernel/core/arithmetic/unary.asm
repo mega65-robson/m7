@@ -26,7 +26,7 @@ Negate:
         lda     #0
         sbc     aRegister+1
         sta     aRegister+1
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -42,7 +42,7 @@ NotA:
         lda     aRegister+1
         eor     #$FF
         sta     aRegister+1
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -54,7 +54,7 @@ NotA:
 AbsA:
         lda     aRegister+1
         bmi     Negate
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -67,7 +67,7 @@ Times256:
         lda     aRegister
         sta     aRegister+1
         stz     aRegister
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -80,7 +80,7 @@ Div256:
         lda     aRegister+1
         sta     aRegister
         stz     aRegister+1
-        .donext
+        rts
 
         .endsection
 

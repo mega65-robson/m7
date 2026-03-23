@@ -20,7 +20,7 @@
 		.codeword  "break"
 DebugBreak:
         .byte   $DB
-        .donext
+        rts
 
 ; ************************************************************************************************
 ;
@@ -38,7 +38,7 @@ SwapReg:
         ldx     bRegister+1
         sta     bRegister+1
         stx     aRegister+1
-        .donext      
+        rts      
         
 ; ************************************************************************************************
 ;
@@ -54,6 +54,6 @@ PopA:
         .stackopen
         .rpop   aRegister
         .stackclose
-        .donext
+        rts
 
         .endsection

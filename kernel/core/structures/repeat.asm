@@ -30,7 +30,7 @@ RepeatStructure:
 
 _RepeatExit:
         pla                                 ; throw saved position        
-        .donext
+        rts
 
         .endsection
                 
