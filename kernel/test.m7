@@ -12,6 +12,6 @@
 :body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
 :main   
-    11 , 42 $100 fill break
+    41234 100 umod raw.hex
     pling cr bye
 ;

@@ -9,7 +9,7 @@
 
 ## Outstanding words
 
-- u/ / mod umod
+- / mod 
 - -> and & for variables.
 
 ## Concerns
