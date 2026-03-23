@@ -7,15 +7,15 @@
 - Replace temporary stack (pha) with indexed.
 
 ## Outstanding words
-- -> and & for variables.
-- while
-- for i
+
 - if if0 if+ if-
 - ifelse ifelse0 ifelse+ ifelse-
 - repeat
+- while
 - case otherwise endcase
 - fill copy
 - u/ / mod umod
+- -> and & for variables.
 
 ## Concerns
 - check raw.read
