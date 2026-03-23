@@ -5,10 +5,10 @@
 
 - Add initialise module functionality
 - endcase test on constant.
+- optimise fill/copy
 
 ## Outstanding words
 
-- fill copy
 - u/ / mod umod
 - -> and & for variables.
 

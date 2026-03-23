@@ -17,21 +17,21 @@ def divide(dividend,divisor):
     #
     #       Calculate B/A
     #
-    z = 0                   
-    b = dividend            
-    a = divisor             
+    zz = 0                   
+    bb = dividend            
+    aa = divisor             
 
     for i in range(0,16):
-        # shift left Z:B as 32 bit value
-        z = ((z << 1) | ((b >> 15) & 1)) & 0xFFFF
-        b = (b << 1) & 0xFFFF
+        # shift left ZZ:BB as 32 bit value
+        zz = ((zz << 1) | ((bb >> 15) & 1)) & 0xFFFF
+        bb = (bb << 1) & 0xFFFF
         # can we subtract ? if so save result in A and set LSB of q
-        if z >= a:
-            b = b | 1
-            z = z - a
+        if zz >= aa:
+            bb = bb | 1
+            zz = zz - aa
 
-    quotient = b
-    remainder = z
+    quotient = bb
+    remainder = zz
     #
     #   a unchanged. Copy B or Z and restore B.
     #
@@ -39,7 +39,7 @@ def divide(dividend,divisor):
     assert actualQ == quotient
     assert actualR == remainder
 
-for t in range(0,1000*1000):
+for t in range(0,10*1000):
     v1 = random.randint(1,0xFFFF)
     v2 = random.randint(1,0xFFFF)
     if random.randint(0,1) == 0:

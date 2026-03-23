@@ -123,6 +123,10 @@ Copy register C to register B
 Dump the Register state Read Character into A Register from system input. 0 if none available Write Character in A Register to system output Write Number in A Register as hex to system output, space prefixed Read the byte at A into A
 ## case
 Case structure, tests A. Form is case [test] [word] [test] [word] otherwise [word] endcase The otherwise is optional. Once a match has been made (otherwise matches all) then we shift beyond endcase. A is not restored afterwards, so values can be passed out. The [word] can be a single value, or a compound word. Otherwise is optional.
+## copy
+Fill memory from address in A with byte B, for a count of C. C = 0 is supported. Copy memory from the address in B to the address in A, C times. C = 0 is supported This is a single forward copy so cannot cope with overlaps.
+## fill
+Fill memory from address in A with byte B, for a count of C. C = 0 is supported.
 ## for
 For loop. Executes he following word 'aRegister' times, (works correctly for zero) The index counts from n-1 to 0
 ## i
@@ -148,7 +152,7 @@ Put signed larger of A and B in A
 ## min
 Put signed smaller of A and B in A
 ## negate
-Negate A
+Fill memory from address in A with byte B, for a count of C. C = 0 is supported. Copy memory from the address in B to the address in A, C times. C = 0 is supported This is a single forward copy so cannot cope with overlaps. Negate A
 ## not
 Set A to the binary Not of A (1's complement)
 ## or
