@@ -32,6 +32,7 @@ void IDClearIdentifiers(void);
 void IDClearLocals(void);
 IDENTIFIER *IDFind(char *name);
 IDENTIFIER *IDAdd(char *name, enum IdentifierType type,int value);
+uint16_t IDCalculateHash(char *name);
 
 void IDTest(void);
 void IDList(void);

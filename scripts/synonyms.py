@@ -20,10 +20,10 @@ class Synonyms(object):
 
     def get(self):
         return {
-            "[":"abc>",
-            "]":">abc",
-            "(":"bc>",
-            ")":">bc",
+            "[[":"abc>",
+            "]]":">abc",
+            "((":"bc>",
+            "))":">bc",
             "push":"a>",
             ",":"a>c"
         }

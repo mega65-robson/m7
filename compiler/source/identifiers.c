@@ -60,16 +60,29 @@ static void _IDEraseIdentifier(int n) {
  */
 static void _IDProcess(char *name) {
     ASSERT(strlen(name) > 0 && strlen(name) <= MAX_IDENT_LENGTH);                   // Check length
-    currentHash = 0;
     char *tgt = currentName;
-    while (*name != '\0') {                                                         // Copy name in upper case calculating hash as you go.
-        char c = toupper(*name++);
-        *tgt++ = c;
-        currentHash += c;
+    while (*name != '\0') {                                                         // Copy name in upper case c
+        *tgt++ = toupper(*name++);
     }
     *tgt = '\0';
+    currentHash = IDCalculateHash(currentName);                                     // Calculate the hash.
 }
 
+
+/**
+ * @brief      Simple 16 bit hash. Just an additive hash, it will do.
+ *
+ * @param      name  Name to hash
+ *
+ * @return     hash value, 16 bit.
+ */
+uint16_t IDCalculateHash(char *name) {
+    uint16_t hash = 0;
+    while (*name != '\0') {
+        hash += toupper(*name++);
+    }
+    return hash;
+}
 
 /**
  * @brief      Look for an identifier in the table

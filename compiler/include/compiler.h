@@ -20,6 +20,7 @@
 
 #include "identifiers.h"
 #include "runtime.h"
+#include "process.h"
 
 #define ASSERT(x)   if (!(x)) exit(fprintf(stderr,"ASSERT: %s (%d)\n",__FILE__,__LINE__))
 #define ERROR       ReportError

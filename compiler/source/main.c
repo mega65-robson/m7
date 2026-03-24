@@ -24,6 +24,10 @@ int main(int argc,char *argv[]) {
     IDClearIdentifiers();
     printf("%s\n",argv[1]);
     RTLoad(argv[1]);
+    for (int n = 3;n < argc;n++) {
+        char *code = PRProcess(argv[n]);
+        printf("%s\n",code);
+    }
     RTSave(argv[2]);
     return 0;
 }

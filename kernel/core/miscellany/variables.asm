@@ -88,7 +88,6 @@ _VHAddress
 ;       Write to variable.
 ;
 _VHWrite:
-        .debug  
         ldx     stackPtr                    ; access the stack.
         stx     _VW1+1                      ; so we can write the next 2 bytes.
         stx     _VW2+1
