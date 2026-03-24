@@ -15,8 +15,8 @@ contexts:
       scope: string.unquoted.yaml
       push: double_quoted_string
 
-    # Comments begin with a # and finish at the end of the line
-    - match: "#"
+    # Comments begin with a // and finish at the end of the line
+    - match: "//"
       scope: message.warning
       push: line_comment
 

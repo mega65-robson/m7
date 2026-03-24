@@ -1,3 +1,6 @@
+//
+//      a comment
+//
 :star 42 raw.write ;
 :pling 33 raw.write ;
 :plus 43 raw.write ;
