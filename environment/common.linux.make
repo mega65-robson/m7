@@ -72,7 +72,7 @@ STORAGE = 400
 #
 #		Code built for this address
 #
-CODEADDR = 1000
+CODEADDR = 801
 
 MEMORYMAP = -D ZEROPAGE=\$$$(ZEROPAGE) -D STORAGE=\$$$(STORAGE) -D CODEADDR=\$$$(CODEADDR)
 

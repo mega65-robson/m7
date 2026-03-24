@@ -38,12 +38,14 @@ asmc: prelim .always
 	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
 	$(PYTHON) $(SCRIPTDIR)compiler.py $(KERNELFILE) $(RUNFILE) test.m7
 
-asm: prelim .always
-	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
+compiler:
 	make -B -C $(ROOTDIR)compiler build
+
+asm: prelim compiler .always
+	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
 	$(BUILDDIR)m7c $(KERNELFILE) $(RUNFILE) test.m7 >$(BUILDDIR)m7.list
 #
 #		Assemble code.asm and run it
 #
 run: .always asm
-	$(EMULATOR) -prg $(RUNFILE),$(CODEADDR) 
+	$(EMULATOR) -prg $(RUNFILE)
