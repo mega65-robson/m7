@@ -15,20 +15,23 @@
 #define MAX_IDENT_LENGTH    (32)                                                    // Max size of an identifier.
 
 enum IdentifierType {
-    Unused,                                                                         // Free for allocation
-    ByteCode,                                                                       // Byte Code (0-7F)
-    CodeWord                                                                        // Code Word (8000-FFFF)
+    Unused = '.',                                                                   // Free for allocation
+    ByteCode = 'B',                                                                 // Byte Code (0-7F)
+    CodeWord = 'C'                                                                  // Code Word (8000-FFFF)
 };
 
 typedef struct _Identifier {
     enum    IdentifierType type;                                                    // Type of record
     char    name[MAX_IDENT_LENGTH+1];                                               // Identifier in lower case.
     int     value;                                                                  // Associated value (address or bytecode)
-    uint8_t hash;                                                                   // Hash of the identifier.    
+    uint16_t hash;                                                                  // Hash of the identifier.    
     bool    isLocal;                                                                // True if local identifier
 } IDENTIFIER;
 
-void RTClearIdentifiers(void);
-void RTClearLocals(void);
-IDENTIFIER *RTFind(char *name);
-IDENTIFIER *RTAdd(char *name, enum IdentifierType type,int value);
+void IDClearIdentifiers(void);
+void IDClearLocals(void);
+IDENTIFIER *IDFind(char *name);
+IDENTIFIER *IDAdd(char *name, enum IdentifierType type,int value);
+
+void IDTest(void);
+void IDList(void);

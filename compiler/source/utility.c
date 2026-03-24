@@ -1,9 +1,9 @@
 // ************************************************************************************************
 // ************************************************************************************************
 //
-//       Name :      main.c
-//       Purpose :   Compiler main program.
-//       Date :      23rd March 2026
+//       Name :      utility.c
+//       Purpose :   Utility functions
+//       Date :      24th March 2026
 //       Author :    Paul Robson (paul@robsons.org.uk)
 //
 // ************************************************************************************************
@@ -13,16 +13,18 @@
 
 
 /**
- * @brief      Main program
+ * @brief      Reports a program error
  *
- * @param[in]  argc  Argument Count
- * @param      argv  Arguments
- *
- * @return     Error code.
+ * @param      format     Format string
+ * @param[in]  <unnamed>  Parameers
  */
-int main(int argc,char *argv[]) {
-    IDClearIdentifiers();
-    printf("Hello, world\n");
-    return 0;
+
+void ReportError(char *format , ...) {
+    char buffer[128];
+    va_list arglist;
+    va_start(arglist, format);    
+    vsprintf(buffer, format, arglist);
+    fprintf(stderr,"ERROR : %s\n",buffer);
+    exit(-1);
 }
 
