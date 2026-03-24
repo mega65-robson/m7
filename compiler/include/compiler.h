@@ -23,5 +23,7 @@
 
 #define ASSERT(x)   if (!(x)) exit(fprintf(stderr,"ASSERT: %s (%d)\n",__FILE__,__LINE__))
 #define ERROR       ReportError
+#define LOG         LogInformation
 
 void ReportError(char *format, ...);
+void LogInformation(char *format , ...);

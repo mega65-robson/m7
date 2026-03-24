@@ -23,4 +23,4 @@ $(EXECUTABLE) : $(OBJECTS)
 	$(CC) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) -o $@
 
 run: $(EXECUTABLE)
-	$(EXECUTABLE)
+	$(EXECUTABLE) $(BUILDDIR)kernel.prg $(BUILDDIR)m7app.prg

@@ -111,6 +111,7 @@ IDENTIFIER *IDAdd(char *name, enum IdentifierType type,int value) {
             id->hash = currentHash;
             id->value = value;
             id->isLocal = (name[0] == '.');                                         // Locals begin with a full stop.
+            LOG("Added %s %c %d",name,type,value);
             return id;
         }
     }

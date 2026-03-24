@@ -28,3 +28,18 @@ void ReportError(char *format , ...) {
     exit(-1);
 }
 
+/**
+ * @brief      Log information
+ *
+ * @param      format     Format string
+ * @param[in]  <unnamed>  Parameers
+ */
+
+void LogInformation(char *format , ...) {
+    char buffer[128];
+    va_list arglist;
+    va_start(arglist, format);    
+    vsprintf(buffer, format, arglist);
+    fprintf(stderr,"INFO : %s\n",buffer);
+}
+

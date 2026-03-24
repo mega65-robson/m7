@@ -22,7 +22,9 @@
  */
 int main(int argc,char *argv[]) {
     IDClearIdentifiers();
-    printf("Hello, world\n");
+    printf("%s\n",argv[1]);
+    RTLoad(argv[1]);
+    RTSave(argv[2]);
     return 0;
 }
 

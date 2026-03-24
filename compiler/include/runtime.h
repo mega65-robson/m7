@@ -11,3 +11,12 @@
  
 #pragma once
 
+void RTLoad(char *fileName);
+void RTSave(char *fileName);
+void RTWriteLong(uint16_t address,uint32_t v);
+int RTGetBaseAddress(void);
+int RTGetPCTR(void);
+
+#define RTOFFSET_BOOT           (8)
+#define RTOFFSET_DICTIONARY     (12)
+#define RTOFFSET_FREEMEM        (16)
