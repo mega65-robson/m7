@@ -80,6 +80,7 @@ static void _SPCompileDefinitionBlock(char *start,char *end) {
  */
 static void _SPCompileBlock(char *start,char *end) {
     char wordBuffer[256];                                                           // Word extracted goes here.
+    int startAddr = RTGetPCTR();
     while (*start == ' ' && start < end) start++;                                   // Skip spaces
     while (start < end) {                                                           // While not done
         char *b = wordBuffer;
@@ -87,10 +88,12 @@ static void _SPCompileBlock(char *start,char *end) {
         *b++ = '\0';
         while (*start == ' ' && start < end) start++;                               // Skip spaces
         if (wordBuffer[0] < 0) {                                                    // Expand the chr(n) marker.
-            sprintf(wordBuffer,"__%d",wordBuffer[0] & 0x7F);
+            sprintf(wordBuffer,"__%c",(wordBuffer[0] & 0x7F)+65);
         } 
         COMCompileWord(wordBuffer);
     }
+    int size = RTGetPCTR()-startAddr;                                               // Size of this block.
+    if (size >= 254) ERROR("Code block is too large");                              // Words / Groups must fit into 1 page now.
 }
 
 /**
@@ -103,6 +106,9 @@ static void _SPCompileBlock(char *start,char *end) {
  * @param      limit  Cannot go beyond this, suggest missing ] 
  */
 static void _SPCompileSubword(char *start,char *limit) {
+    if ((RTGetPCTR() & 1) != 0) {
+        RTWriteByte(0);
+    }
     subWordAddresses[nextSubWordAddress] = RTGetPCTR();                             // Remember where this word is for later.
     char *end = start+1;
     while (!(end[0] == ' ' && end[1] == ']' && end[2] == ' ')) {                    // Look for ' ] '
@@ -127,5 +133,5 @@ static void _SPCompileSubword(char *start,char *limit) {
  */
 int SPGetSubwordAddress(int n) {
     ASSERT(n >= 0 && n < nextSubWordAddress);
-    return subWordAddresses[nextSubWordAddress];
+    return subWordAddresses[n];
 }

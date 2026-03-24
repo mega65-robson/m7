@@ -75,7 +75,18 @@ void COMCompileWord(char *word) {
         COMCompile(false,0,"EOL");
         return;
     }
-    fprintf(stderr,"... [%s]\n",word);
+    //
+    //      Sub Word
+    //
+    if (word[0] == '_' && word[1] == '_') {
+        int addr = SPGetSubwordAddress(word[2]-'A');
+        ASSERT(addr % 2 == 0);
+        addr = (addr >> 1) | 0x8000;
+        addr = ((addr >> 8) | (addr << 8)) & 0xFFFF;
+        COMCompile(true,addr,"[] word");
+        return;        
+    }
+    ERROR("Unknown word %s",word);
 }
 
 /**

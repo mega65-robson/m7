@@ -15,7 +15,9 @@
     box 
     count raw.hex cr
     & count raw.hex cr
-    $FEDC -> count
+    [ $FEDC -> count ]
     count raw.hex cr
-    pling cr bye
+    pling cr 
+    32 for [ 64 i + raw.write ] cr
+    bye
 ;
