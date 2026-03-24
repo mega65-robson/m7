@@ -12,15 +12,22 @@
 
 :body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
+:set.address [ $9F20 ! c>a $9F22 c! ] ;
+
+:clear.line 310 for [ i $9f23 c! ] ;
+
 :main   
-    raw.hex cr
-    star cr
-    box 
-    count raw.hex cr
-    & count raw.hex cr
-    $FEDC -> count 
-    count raw.hex cr
-    pling cr 
-    // 32 for [ 64 i + raw.write ] cr
-    bye
+
+    $21 $9f29 c!
+    64 $9f2a c!
+    64 $9f2b c!
+    $11 , $FA00 set.address 
+
+    $07 $9F34 c!
+    $00 $9F36 c!
+
+    10 for [ $10 , i 320 * set.address clear.line ]
+    65000 for [ ]
+    10 for [ $10 , i 100 + 320 * set.address clear.line ]
+    repeat 0
 ;
