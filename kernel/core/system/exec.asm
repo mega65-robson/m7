@@ -26,9 +26,9 @@ RunProgram:
 
         stz     tempStackPtr                ; reset the temporary stack
         
-        lda     Start+16                    ; free memory into A
+        lda     FreeMemoryAddress           ; free memory into A
         sta     aRegister
-        lda     Start+17
+        lda     FreeMemoryAddress+1
         sta     aRegister+1
         stz     bRegister                   ; zero B & C
         stz     bRegister+1

@@ -26,7 +26,7 @@ class Compiler(object):
             self.memory.append(0)
         self.pctr = self.base + len(self.memory)                                    # Current program counter.
         self.dictionary = {}                                                        # Read in dictionary
-        p = self.memory[12]+self.memory[13]*256                                     # Address of dictionary.
+        p = self.memory[36]+self.memory[37]*256                                     # Address of dictionary.
         while self.read(p) != 0:                                                    # Read it in.
             p = self.readDictionaryItem(p)
     #   
@@ -95,7 +95,7 @@ class Compiler(object):
 
             self.dictionary[s] = self.pctr
             if s == "MAIN":                                                         # Main specified.
-                self.writeWord(self.base+8,self.pctr)
+                self.writeWord(self.base+32,self.pctr)
             return
 
         if s == "VARIABLE":                                                         # handle variable.
@@ -157,7 +157,7 @@ class Compiler(object):
     #
     def writeFile(self,tgtFile):
         print("Writing to "+tgtFile)
-        self.writeWord(self.base+16,self.pctr)                                      # Update free memory
+        self.writeWord(self.base+40,self.pctr)                                      # Update free memory
         h = open(tgtFile,"wb")
         h.write(bytes([self.base & 0xFF,self.base >> 8]))
         h.write(bytes(self.memory))

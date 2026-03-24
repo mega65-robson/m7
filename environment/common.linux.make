@@ -84,7 +84,7 @@ MEMORYMAP = -D ZEROPAGE=\$$$(ZEROPAGE) -D STORAGE=\$$$(STORAGE) -D CODEADDR=\$$$
 #
 #		Run the x16 emulator
 #
-EMULATOR = $(X16EMUDIR)$(EMULATOREXEC)  -debug -scale 2 -dump R -run  
+EMULATOR = $(X16EMUDIR)$(EMULATOREXEC) -fsroot $(BUILDDIR) -debug -scale 2 -dump R -run  
 #
 #		Run the assembler
 #

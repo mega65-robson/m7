@@ -18,6 +18,6 @@ int RTGetBaseAddress(void);
 int RTGetPCTR(void);
 void RTWriteByte(uint8_t b);
 
-#define RTOFFSET_BOOT           (8)
-#define RTOFFSET_DICTIONARY     (12)
-#define RTOFFSET_FREEMEM        (16)
+#define RTOFFSET_BOOT           (32)
+#define RTOFFSET_DICTIONARY     (36)
+#define RTOFFSET_FREEMEM        (40)

@@ -11,8 +11,8 @@
 
 include ../environment/system.make
 
-KERNELFILE = $(BUILDDIR)kernel.prg
-RUNFILE = $(BUILDDIR)m7app.prg
+KERNELFILE = $(BUILDDIR)KERNEL.PRG
+RUNFILE = $(BUILDDIR)M7APP.PRG
 MODULES = core 
 BUILDROOT = ./
 
@@ -41,7 +41,7 @@ asmc: prelim .always
 asm: prelim .always
 	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
 	make -B -C $(ROOTDIR)compiler build
-	$(BUILDDIR)m7c $(KERNELFILE) $(RUNFILE) test.m7
+	$(BUILDDIR)m7c $(KERNELFILE) $(RUNFILE) test.m7 >$(BUILDDIR)m7.list
 #
 #		Assemble code.asm and run it
 #

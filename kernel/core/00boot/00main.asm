@@ -34,12 +34,15 @@
 
 Start:  
         jmp     RunProgram
-        * = Start + 8
+
+        * = Start + 32
 
 BootAddress:
-        .dword  0                           ; Boot address          +8
-        .dword  Dictionary                  ; Dictionary address    +12        
-        .dword  0                           ; Free memory           +16
+        .dword  0                           ; Boot address          +32
+DictAddress:        
+        .dword  Dictionary                  ; Dictionary address    +36        
+FreeMemoryAddress:        
+        .dword  0                           ; Free memory           +40
 
 
         .endsection

@@ -13,14 +13,14 @@
 :body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
 :main   
-    "Hello_world" raw.hex cr
+    raw.hex cr
     star cr
     box 
     count raw.hex cr
     & count raw.hex cr
-    [ $FEDC -> count ]
+    $FEDC -> count 
     count raw.hex cr
     pling cr 
-    32 for [ 64 i + raw.write ] cr
+    // 32 for [ 64 i + raw.write ] cr
     bye
 ;
