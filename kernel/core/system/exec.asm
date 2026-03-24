@@ -54,7 +54,6 @@ RunLoop:
 
 RunOneWord:
 
-
         lda     ($00),y                     ; this $00 value is the 'stack pointer'.
 stackPtr = * - 1                            ; this points to the $00 which is manipulated, and copied.                                    
 

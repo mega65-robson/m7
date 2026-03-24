@@ -16,6 +16,7 @@ void RTSave(char *fileName);
 void RTWriteLong(uint16_t address,uint32_t v);
 int RTGetBaseAddress(void);
 int RTGetPCTR(void);
+void RTWriteByte(uint8_t b);
 
 #define RTOFFSET_BOOT           (8)
 #define RTOFFSET_DICTIONARY     (12)

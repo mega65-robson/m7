@@ -16,7 +16,7 @@
  * @brief      Reports a program error
  *
  * @param      format     Format string
- * @param[in]  <unnamed>  Parameers
+ * @param[in]  <unnamed>  Parameters
  */
 
 void ReportError(char *format , ...) {
@@ -32,7 +32,7 @@ void ReportError(char *format , ...) {
  * @brief      Log information
  *
  * @param      format     Format string
- * @param[in]  <unnamed>  Parameers
+ * @param[in]  <unnamed>  Parameters
  */
 
 void LogInformation(char *format , ...) {
@@ -41,5 +41,37 @@ void LogInformation(char *format , ...) {
     va_start(arglist, format);    
     vsprintf(buffer, format, arglist);
     fprintf(stderr,"INFO : %s\n",buffer);
+}
+
+/**
+ * @brief      Convert a string to an integer
+ *
+ * @param      s        String to convert
+ * @param      pResult  Result stored here.
+ *
+ * @return     true if successfully converted.
+ */
+bool StringToInteger(char *s,int *pResult) {
+    int base = 10;
+    bool isMinus = false;
+    *pResult = 0;
+    if (*s == '-') {                                                                // Handle leading -
+        isMinus = true;s++;
+    }
+    if (*s == '$') {                                                                // Handle hex marker.
+        base = 16;s++;
+    }
+    do {
+        int digit = *s++;                                                           // Get a digit
+        if (!isxdigit(digit)) return false;                                         // Validate as digit.
+        digit = (digit >= 'A') ? digit - 'A' + 10 : digit - '0';                    // Convert to integer
+        ASSERT(digit >= 0 && digit < 16);
+        if (digit >= base) return false;                                            // Not allowed in base
+        *pResult = (*pResult * base) + digit;                                       // Add in digit.
+    } while (*s != '\0');
+    if (isMinus) {                                                                  // Handle -ve
+        *pResult = -*pResult;
+    }
+    return true;
 }
 

@@ -13,7 +13,7 @@ include ../environment/system.make
 
 CC = gcc
 SOURCEDIR = source/
-CFLAGS = -I include -O2 -Wall -Werror
+CFLAGS = -I include -O2 -Wall -Werror 
 OBJECTS = 	$(SOURCEDIR)main.o $(SOURCEDIR)runtime.o $(SOURCEDIR)identifiers.o $(SOURCEDIR)utility.o \
 			$(SOURCEDIR)process.o $(SOURCEDIR)split.o $(SOURCEDIR)worker.o
 EXECUTABLE = $(BUILDDIR)m7c

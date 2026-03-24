@@ -28,16 +28,20 @@ autogen:
 	$(PYTHON) $(SCRIPTDIR)generators/incdecgen.py >$(SOURCEDIR)core/generated/__incdec.asm
 
 prelim: autogen .always
-	$(PYTHON) $(SCRIPTDIR)constants.py $(BUILDROOT) $(MODULES)# >$(ROOTDIR)core/generated/__byteconst.inc
 	$(PYTHON) $(SCRIPTDIR)documentation.py $(BUILDROOT) $(MODULES) >$(ROOTDIR)documents/vocabulary.md
+	$(PYTHON) $(SCRIPTDIR)constants.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__byteconst.inc
 	$(PYTHON) $(SCRIPTDIR)dictionary.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__dictionary.asm
 	$(PYTHON) $(SCRIPTDIR)vectors.py $(BUILDROOT) $(MODULES) >$(SOURCEDIR)core/generated/__vectors.asm
 	$(PYTHON) $(SCRIPTDIR)build.py $(BUILDROOT) $(MODULES) >__main.asm
 
-asm: prelim .always
+asmc: prelim .always
 	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
 	$(PYTHON) $(SCRIPTDIR)compiler.py $(KERNELFILE) $(RUNFILE) test.m7
 
+asm: prelim .always
+	$(ASSEMBLER) __main.asm -o $(KERNELFILE) 
+	make -B -C $(ROOTDIR)compiler build
+	$(BUILDDIR)m7c $(KERNELFILE) $(RUNFILE) test.m7
 #
 #		Assemble code.asm and run it
 #

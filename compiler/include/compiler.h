@@ -24,10 +24,16 @@
 #include "split.h"
 #include "worker.h"
 
-#define ASSERT(x)   if (!(x)) exit(fprintf(stderr,"ASSERT: %s (%d)\n",__FILE__,__LINE__))
 #define ERROR       ReportError
+
+#ifdef DEBUG
+#define ASSERT(x)   if (!(x)) exit(fprintf(stderr,"ASSERT: %s (%d)\n",__FILE__,__LINE__))
 #define LOG         LogInformation
+#else
+#define ASSERT(x)   {}
+#define LOG(x,...)  {}
+#endif
 
 void ReportError(char *format, ...);
 void LogInformation(char *format , ...);
-
+bool StringToInteger(char *s,int *pResult);

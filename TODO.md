@@ -1,7 +1,9 @@
 # TODO List
 
 ## Better compiler supporting { }
+- Check 256 byte limit.
 
+## Fixes
 - Add initialise module functionality
 - endcase test on constant.
 - optimise fill/copy

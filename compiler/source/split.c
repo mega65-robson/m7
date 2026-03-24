@@ -79,7 +79,7 @@ static void _SPCompileDefinitionBlock(char *start,char *end) {
  * @param      end    End of block
  */
 static void _SPCompileBlock(char *start,char *end) {
-    char wordBuffer[MAX_IDENT_LENGTH+1]; 
+    char wordBuffer[256];                                                           // Word extracted goes here.
     while (*start == ' ' && start < end) start++;                                   // Skip spaces
     while (start < end) {                                                           // While not done
         char *b = wordBuffer;

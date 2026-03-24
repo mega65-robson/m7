@@ -77,7 +77,7 @@ _VHAddress
         ldx     stackPtr                    ; access the stack.
         tya                                 ; work out the physical address.
         clc
-        adc     00,x
+        adc     $00,x
         sta     aRegister
         lda     $01,x
         adc     #0

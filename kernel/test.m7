@@ -1,5 +1,3 @@
-// test program
-
 :star 42 raw.write ;
 :pling 33 raw.write ;
 :plus 43 raw.write ;
@@ -12,6 +10,9 @@
 :body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
 :main   
+    "Hello_world" raw.hex cr
+    star cr
+    box 
     count raw.hex cr
     & count raw.hex cr
     $FEDC -> count

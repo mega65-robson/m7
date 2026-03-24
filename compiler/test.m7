@@ -9,7 +9,7 @@
 
 :count variable 
 
-"Hello_world"
+"Hello_world" -5
 
 :body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
