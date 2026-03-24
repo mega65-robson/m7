@@ -21,12 +21,15 @@
  * @return     Error code.
  */
 int main(int argc,char *argv[]) {
+    if (argc < 4) {
+        fprintf(stderr,"m7c <kernel> <application> <source> <source> ....\n");
+        return 1;
+    }
     IDClearIdentifiers();
-    printf("%s\n",argv[1]);
     RTLoad(argv[1]);
     for (int n = 3;n < argc;n++) {
         char *code = PRProcess(argv[n]);
-        printf("%s\n",code);
+        SPProcess(code);
     }
     RTSave(argv[2]);
     return 0;

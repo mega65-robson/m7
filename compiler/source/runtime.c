@@ -53,7 +53,6 @@ static void _RTLoadDictionary(void) {
         IDAdd(name,(address < 128) ? ByteCode : CodeWord,address);                  // Save in identifier structure.
         p += 2;
     }
-    IDList();
 }
 
 /**

@@ -9,12 +9,14 @@
 
 :count variable 
 
+"Hello_world"
+
 :body i raw.hex case 2 star 4 plus otherwise pling endcase  cr ;
 
 :main   
     count raw.hex cr
     & count raw.hex cr
-    $FEDC -> count
-    count raw.hex cr
+    [ $FEDC -> count ]
+    [ count raw.hex cr ]
     pling cr bye
 ;

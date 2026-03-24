@@ -13,7 +13,7 @@
 
 char codeBuffer[65536];                                                             // Currently processed code.
 
-static void _PRRemoveCRLF(void);
+static void _PRRemoveControl(void);
 static void _PRRemoveComments(void);
 static void _PRCapitalise(void);
 
@@ -33,25 +33,19 @@ char *PRProcess(char *fileName) {
     if (count == sizeof(codeBuffer)) ERROR("Source file %s too large",fileName);    // Probably too big.
     fclose(f);
     LOG("Read %ld bytes.",count);
-    _PRRemoveCRLF();
     _PRRemoveComments();
+    _PRRemoveControl();
     _PRCapitalise();
     return codeBuffer;
 }
 
 /**
- * @brief      Remove CR/LF and controls.
+ * @brief      Remove Control
  */
-static void _PRRemoveCRLF(void) {
+static void _PRRemoveControl(void) {
     char *p = codeBuffer;
-    while (*p != '\0') {                                                            // Convert LF/CR and CR/LF to just LF 
-        if (p[0] == 0x0A && p[1] == 0x0D) {
-            p[1] = ' ';
-        }
-        if (p[0] == 0x0D && p[1] == 0x0A) {
-            p[0] = ' ';
-        }
-        if (*p < ' ' && *p != 0x0A) *p = ' ';                                       // Remove tabs etc.
+    while (*p != '\0') {                                        
+        if (*p < ' ') *p = ' ';                                                     // Remove tabs etc.
         p++;
     }
 }
@@ -78,7 +72,7 @@ static void _PRRemoveComments(void) {
 static void _PRCapitalise(void) {
     char *p = codeBuffer;
     while (*p != '\0') {
-        while (*p == ' ' || *p == 0x0A) p++;                                        // Skip over spaces/LF
+        while (*p == ' ') p++;                                                      // Skip over spaces
         if (*p == '"') {                                                            // If quoted string.
             while (*p > ' ') p++;                                                   // Skip over it.
         } else {                                                                    
